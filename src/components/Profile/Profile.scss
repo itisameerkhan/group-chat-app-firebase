@@ -1,0 +1,26 @@
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: .5rem 1rem;
+    border-bottom: 2px solid white;
+    background-color: #007fff;
+    border-radius: 10px 10px 0 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+}
+.profile-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+     p {
+        font-size: 1.2rem;
+     }
+}

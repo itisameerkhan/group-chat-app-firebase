@@ -1,0 +1,35 @@
+.bubble {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 1rem 0;
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+  .msg {
+    background-color: #007fff;
+    padding: 0.5rem 1rem;
+    border-radius: 10px 10px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    p {
+      &:nth-child(1) {
+        font-weight: bold;
+        color: rgb(9, 3, 3);
+      }
+    }
+  }
+}
+
+.current-user {
+  justify-content: end;
+  flex-direction: row-reverse;
+
+  .msg {
+    border-radius: 10px 10px 0px 10px !important;
+  }
+}

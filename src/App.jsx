@@ -1,0 +1,33 @@
+import { Outlet } from "react-router-dom";
+import "./index.scss";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
+import { auth } from "./config/firebase";
+import { useNavigate } from "react-router-dom";
+
+const App = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user);
+        
+        navigate("/home");
+      } else {
+        navigate("/");
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  return (
+    <div className="app">
+      <Outlet />
+    </div>
+  );
+};
+
+export default App;
