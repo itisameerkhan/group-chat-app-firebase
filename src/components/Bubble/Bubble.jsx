@@ -2,8 +2,8 @@ import "./Bubble.scss";
 import { auth } from "../../config/firebase";
 
 const Bubble = (props) => {
-
-  const { fullName, photoURL, id, message, userId } = props.data;
+  const { fullName, photoURL, id, message, userId, type, imageURL } =
+    props.data;
 
   return (
     <div
@@ -11,10 +11,10 @@ const Bubble = (props) => {
         auth.currentUser.uid === userId ? "current-user" : ""
       }`}
     >
-      <img src={photoURL} alt="img" />
+      <img src={photoURL} alt="img"  />
       <div className="msg">
         <p>{fullName}</p>
-        <p>{message}</p>
+        {type === "text" ? <p>{message}</p> : <img src={imageURL} alt="img" className="chat-img" />}
       </div>
     </div>
   );

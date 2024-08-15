@@ -36,3 +36,25 @@
     }
   }
 }
+.btn-1 {
+  border-radius: 0px !important;
+}
+#attachment {
+  display: none;
+}
+.attach-file {
+  height: 100%;
+  width: 10%;
+  background-color: #007fff;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3d90e2;
+  }
+}
+.active {
+  background-color: green !important;
+}

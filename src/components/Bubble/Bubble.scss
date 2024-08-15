@@ -1,12 +1,14 @@
 .bubble {
   display: flex;
-  align-items: center;
+  align-items: end;
   gap: 0.7rem;
   margin: 1rem 0;
   img {
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
   }
   .msg {
     background-color: #007fff;
@@ -32,4 +34,11 @@
   .msg {
     border-radius: 10px 10px 0px 10px !important;
   }
+}
+.chat-img {
+  height: 200px !important;
+  width: 200px !important;
+  border-radius: 10px !important;
+  object-fit: cover;
+  object-position: center;
 }
