@@ -3,6 +3,8 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login/Login.jsx";
 import Home from "./pages/Home/Home.jsx";
+import { Provider } from "react-redux";
+import appStore from "./context/appStore.js";
 
 const appRouter = createBrowserRouter([
   {
@@ -22,5 +24,7 @@ const appRouter = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={appRouter} />
+  <Provider store={appStore}>
+    <RouterProvider router={appRouter} />
+  </Provider>
 );

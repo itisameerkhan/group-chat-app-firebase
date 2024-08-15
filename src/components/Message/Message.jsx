@@ -2,8 +2,6 @@ import { useState } from "react";
 import "./Message.scss";
 import { db, auth } from "../../config/firebase";
 import {
-  addDoc,
-  collection,
   serverTimestamp,
   doc,
   setDoc,

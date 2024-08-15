@@ -7,6 +7,9 @@ const Profile = () => {
   const handleSignOut = async () => {
     await signOut(auth);
   };
+
+  console.log("auth from profile", auth.currentUser);
+
   return (
     <div className="profile">
       <div className="profile-left">
