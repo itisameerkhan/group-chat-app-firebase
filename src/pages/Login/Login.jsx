@@ -19,6 +19,8 @@ import {
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../context/userSlice.js";
 
 const Login = () => {
   const [loginState, setLoginState] = useState(false);
@@ -28,6 +30,7 @@ const Login = () => {
     password: "",
   });
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [passStatus, setPassStatus] = useState(false);
   const [loadingStatus, setLoadingStatus] = useState(false);
@@ -78,6 +81,7 @@ const Login = () => {
       displayName: userData.fullName,
       photoURL: downloadURL,
     });
+    dispatch(addUser(auth.currentUser));
     navigate("/home");
   };
 
@@ -128,6 +132,7 @@ const Login = () => {
           userData.email,
           userData.password
         );
+        dispatch(addUser(auth.currentUser));
         navigate("/home");
       } else {
         await createUserWithEmailAndPassword(
@@ -135,7 +140,6 @@ const Login = () => {
           userData.email,
           userData.password
         );
-        console.log("current user: ", auth.currentUser);
         handleUpdateUser();
       }
     } catch (error) {
@@ -179,6 +183,7 @@ const Login = () => {
     console.log("google sign in function");
     try {
       await signInWithPopup(auth, googleAuth);
+      dispatch(addUser(auth.currentUser));
       navigate("/home");
     } catch (e) {
       console.log(e);
@@ -235,16 +240,18 @@ const Login = () => {
           }
           label={passStatus ? "Hide Password" : "Show password"}
         />
-        <label htmlFor="displayImage" className="img-label">
-          {imgFile ? (
-            imgFile.name
-          ) : (
-            <p className="label-img">
-              <span className="material-symbols-outlined">cloud_upload</span>
-              UPLOAD IMAGE
-            </p>
-          )}
-        </label>
+        {!loginState && (
+          <label htmlFor="displayImage" className="img-label">
+            {imgFile ? (
+              imgFile.name
+            ) : (
+              <p className="label-img">
+                <span className="material-symbols-outlined">cloud_upload</span>
+                UPLOAD IMAGE
+              </p>
+            )}
+          </label>
+        )}
         <input
           type="file"
           id="displayImage"

@@ -2,13 +2,15 @@ import "./Profile.scss";
 import { auth } from "../../config/firebase";
 import { Button } from "@mui/material";
 import { signOut } from "firebase/auth";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const handleSignOut = async () => {
     await signOut(auth);
   };
 
-  console.log("auth from profile", auth.currentUser);
+//   const user = useSelector(store => store.user);
+
 
   return (
     <div className="profile">
